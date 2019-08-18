@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Controller to manage the content
+ */
 namespace App\Http\Controllers;
 
 use App\Content;

@@ -1,5 +1,7 @@
 <?php
-
+/**
+ *  Used this for search using vue js
+ */
 namespace App\Http\Controllers;
 
 use App\Content;
@@ -10,7 +12,7 @@ class BlogviewController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * with search by key
+     * with search by keyword
      *
      * @return \Illuminate\Http\Response
      */
