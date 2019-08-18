@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <a href="{{ url('/content') }}">< Back to Content</a>
-    <h2 style="text-align: center">Edit A Form</h2><br/>
+    <h2 style="text-align: center">Edit Content</h2><br/>
     <div class="container">
     </div>
     <form method="post" action="{{action('ContentController@update', $id)}}">
