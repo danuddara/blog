@@ -20,7 +20,7 @@
                 <a id="{{$content->id}}"><h3 class="title">{{$content->title}}</h3></a>
                 <p>{{$content->description}}</p>
                 <p><small>tags: {{$content->tags}}</small>
-                <small style="text-align: right">, Date: {{ date('d-M-y h:m:s', strtotime($content->created_at))}}</small></p>
+                <small style="text-align: right">, Date: {{ date('d-M-y h:i:s', strtotime($content->created_at))}}</small></p>
          </div>
         @endforeach
            </div>

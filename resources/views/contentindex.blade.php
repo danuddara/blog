@@ -13,7 +13,7 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>ID</th>
+            <th>Created</th>
             <th>Title</th>
             <th>Description</th>
             <th>tags</th>
@@ -24,7 +24,7 @@
 
         @foreach($contents as $content)
             <tr>
-                <td>{{$content->id}}</td>
+                <td>{{$content->created_at}}</td>
                 <td>{{$content->title}}</td>
                 <td>{{$content->description}}</td>
                 <td>{{$content->tags}}</td>
