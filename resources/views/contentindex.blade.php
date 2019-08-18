@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Index Page</title>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
 <div class="container">
     <br />
     @if (\Session::has('success'))
@@ -13,6 +8,8 @@
             <p>{{ \Session::get('success') }}</p>
         </div><br />
     @endif
+
+    <a href="{{ url('/add') }}">Add New Content</a>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -44,5 +41,5 @@
         </tbody>
     </table>
 </div>
-</body>
-</html>
+
+@endsection

@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Blog</title>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
 <div class="container">
     <br />
     @if (\Session::has('success'))
@@ -24,7 +19,8 @@
          <div class="blog_summary ">
                 <a id="{{$content->id}}"><h3 class="title">{{$content->title}}</h3></a>
                 <p>{{$content->description}}</p>
-                <p><small>tags: {{$content->tags}}</small></p>
+                <p><small>tags: {{$content->tags}}</small>
+                <small style="text-align: right">, Date: {{ date('d-M-y h:m:s', strtotime($content->created_at))}}</small></p>
          </div>
         @endforeach
            </div>
@@ -33,24 +29,4 @@
 
 
 </div>
-</body>
-</html>
-<style>
-    .title{
-        text-transform: capitalize ;
-    }
-    .logo{
-        font-size: 40px;
-        font-weight: bold;
-    }
-    .blog_summary{
-        border-top: 2px double gainsboro;
-        padding:10px;
-        width: 50%;
-        margin: 0 auto;
-    }
-    .col-centered{
-        float: none;
-        margin: 0 auto;
-    }
-</style>
+@endsection
