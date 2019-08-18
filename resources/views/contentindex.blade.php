@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" id="app">
     <br />
     @if (\Session::has('success'))
         <div class="alert alert-success">
@@ -9,8 +9,12 @@
         </div><br />
     @endif
 
+    <example-component></example-component>
+
     <a href="{{ url('/add') }}">Add New Content</a>
-    <table class="table table-striped">
+
+    <a href="{{ url('/content') }}">| Reset</a>
+    <table class="table table-striped" id="content-table">
         <thead>
         <tr>
             <th>Created</th>
