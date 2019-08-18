@@ -26,7 +26,7 @@
             <div class="col-md-4"></div>
             <div class="form-group col-md-4">
                 <label for="Tags">Tags:</label>
-                <input type="text" class="form-control" name="tags">
+                <input type="text" class="form-control" name="tags" placeholder="Add comma to separate key words">
             </div>
         </div>
         <div class="row">
