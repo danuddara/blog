@@ -23,3 +23,7 @@ Route::get('edit/{id}','ContentController@edit');
 Route::post('edit/{id}','ContentController@update');
 Route::delete('{id}','ContentController@destroy');
 Route::get('blog','ContentController@show');
+Auth::routes();
+
+
+Route::get('/home', 'HomeController@index')->name('home');
