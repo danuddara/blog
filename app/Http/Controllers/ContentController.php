@@ -39,11 +39,16 @@ class ContentController extends Controller
     {
       $content = new Content();
       if($request->get('title') && $request->get('description')) {
-        $content->title = $request->get('title');
-        $content->description = $request->get('description');
-        $content->tags = $request->get('tags');
-        $content->save();
-        return redirect('content')->with('success', "Content '{$content->title}' has been successfully added");
+        try {
+          $content->title = $request->get('title');
+          $content->description = $request->get('description');
+          $content->tags = $request->get('tags');
+          $content->save();
+          return redirect('content')->with('success', "Content '{$content->title}' has been successfully added");
+        } catch (Exception $e) {
+            //add exception message to the logger
+            logger('Problem with create content:'.$e->getMessage(),$e);
+        }
       } else {
         return redirect('add')->with('failure', "Content Title and description cannot be empty");
       }
@@ -83,12 +88,16 @@ class ContentController extends Controller
       if(!$request->get('title') || !$request->get('description')) {
         return redirect('/edit/'.$id)->with('failure', "Content Title and Description cannot be empty");
       }
-
-      $content->title = $request->get('title');
-      $content->description = $request->get('description');
-      $content->tags = $request->get('tags');
-      $content->save();
-      return redirect('content')->with('success', "Content '{$content->title}' has been successfully updated");
+      try {
+        $content->title = $request->get('title');
+        $content->description = $request->get('description');
+        $content->tags = $request->get('tags');
+        $content->save();
+        return redirect('content')->with('success', "Content '{$content->title}' has been successfully updated");
+      } catch (Exception $e) {
+        //add exception message to the logger
+        logger('Problem with update content:'.$e->getMessage(),$e);
+      }
 
     }
 
@@ -99,8 +108,13 @@ class ContentController extends Controller
      */
     public function destroy($id)
     {
-      $content = Content::find($id);
-      $content->delete();
-      return redirect('content')->with('success',"Content for '{$content->title}' has been  deleted");
+      try {
+        $content = Content::find($id);
+        $content->delete();
+        return redirect('content')->with('success', "Content for '{$content->title}' has been  deleted");
+      } catch (Exception $e) {
+        //add exception message to the logger
+        logger('Problem with delete content:'.$e->getMessage(),$e);
+      }
     }
 }
