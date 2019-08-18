@@ -1,3 +1,8 @@
+Simple Blog application
+````
+Laravel , MongoDB, Vue.JS
+````
+
 Make a user as admin to edit the content.
 
 ````
