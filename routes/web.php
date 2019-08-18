@@ -16,12 +16,12 @@ Route::get('/', function () {
 });
 
 /* Content creation for blog */
-Route::get('add','ContentController@create');
-Route::post('add','ContentController@store');
-Route::get('content','ContentController@index');
-Route::get('edit/{id}','ContentController@edit');
-Route::post('edit/{id}','ContentController@update');
-Route::delete('{id}','ContentController@destroy');
+Route::get('add','ContentController@create')->middleware('can:edit-content');
+Route::post('add','ContentController@store')->middleware('can:edit-content');
+Route::get('content','ContentController@index')->middleware('can:edit-content');
+Route::get('edit/{id}','ContentController@edit')->middleware('can:edit-content');
+Route::post('edit/{id}','ContentController@update')->middleware('can:edit-content');
+Route::delete('{id}','ContentController@destroy')->middleware('can:edit-content');
 Route::get('blog','ContentController@show');
 Auth::routes();
 
