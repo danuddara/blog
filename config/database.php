@@ -68,7 +68,7 @@ return [
           'host'     => env('MONGO_DB_HOST', 'localhost'),
           'port'     => env('MONGO_DB_PORT', 27017),
           'database' => env('DB_DATABASE', 'blogdb'),
-          'username' => env('DB_USERNAME', 'root'),
+          'username' => env('DB_USERNAME', ''),
           'password' => env('DB_PASSWORD', ''),
           'options'  => []
         ],

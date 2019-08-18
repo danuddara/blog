@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/* Content creation for blog */
+Route::get('add','ContentController@create');
+Route::post('add','ContentController@store');
+Route::get('content','ContentController@index');
+Route::get('edit/{id}','ContentController@edit');
+Route::post('edit/{id}','ContentController@update');
+Route::delete('{id}','ContentController@destroy');
+Route::get('blog','ContentController@show');
