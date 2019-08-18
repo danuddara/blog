@@ -45,7 +45,7 @@ class ContentController extends Controller
         $content->save();
         return redirect('content')->with('success', "Content '{$content->title}' has been successfully added");
       } else {
-        return redirect('add')->with('failure', "Content cannot be empty");
+        return redirect('add')->with('failure', "Content Title and description cannot be empty");
       }
     }
 
@@ -79,12 +79,16 @@ class ContentController extends Controller
      */
     public function update(Request $request, $id)
     {
-              $content= Content::find($id);
-              $content->title = $request->get('title');
-              $content->description = $request->get('description');
-              $content->tags = $request->get('tags');
-              $content->save();
-              return redirect('content')->with('success', "Content '{$content->title}' has been successfully updated");
+      $content= Content::find($id);
+      if(!$request->get('title') || !$request->get('description')) {
+        return redirect('/edit/'.$id)->with('failure', "Content Title and Description cannot be empty");
+      }
+
+      $content->title = $request->get('title');
+      $content->description = $request->get('description');
+      $content->tags = $request->get('tags');
+      $content->save();
+      return redirect('content')->with('success', "Content '{$content->title}' has been successfully updated");
 
     }
 
