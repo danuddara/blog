@@ -40,9 +40,9 @@ class ContentController extends Controller
       $content = new Content();
       if($request->get('title') && $request->get('description')) {
         try {
-          $content->title = $request->get('title');
-          $content->description = $request->get('description');
-          $content->tags = $request->get('tags');
+          $content->title = trim(strip_tags($request->get('title')));
+          $content->description = trim(strip_tags($request->get('description')));
+          $content->tags = trim(strip_tags($request->get('tags')));
           $content->save();
           return redirect('content')->with('success', "Content '{$content->title}' has been successfully added");
         } catch (Exception $e) {
@@ -89,9 +89,9 @@ class ContentController extends Controller
         return redirect('/edit/'.$id)->with('failure', "Content Title and Description cannot be empty");
       }
       try {
-        $content->title = $request->get('title');
-        $content->description = $request->get('description');
-        $content->tags = $request->get('tags');
+        $content->title = trim(strip_tags($request->get('title')));
+        $content->description = trim(strip_tags($request->get('description')));
+        $content->tags = trim(strip_tags($request->get('tags')));
         $content->save();
         return redirect('content')->with('success', "Content '{$content->title}' has been successfully updated");
       } catch (Exception $e) {

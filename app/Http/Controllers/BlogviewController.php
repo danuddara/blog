@@ -18,7 +18,7 @@ class BlogviewController extends Controller
      */
     public function index(Request $request)
     {
-      $word = $request->get('keyword');
+      $word = trim(strip_tags($request->get('keyword')));
       $content = Content::query()->where('tags', 'like', "%$word%")->get();
       return response($content, Response::HTTP_OK);
     }
