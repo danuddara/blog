@@ -40,7 +40,7 @@ class ContentController extends Controller
       $content->description = $request->get('description');
       $content->tags = $request->get('tags');
       $content->save();
-      return redirect('content')->with('success', 'Content has been successfully added');
+      return redirect('content')->with('success', "Content '{$content->title}' has been successfully added");
     }
 
     /**
@@ -78,7 +78,7 @@ class ContentController extends Controller
               $content->description = $request->get('description');
               $content->tags = $request->get('tags');
               $content->save();
-              return redirect('content')->with('success', 'Content has been successfully update');
+              return redirect('content')->with('success', "Content '{$content->title}' has been successfully updated");
 
     }
 
