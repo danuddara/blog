@@ -51,7 +51,7 @@ class ContentController extends Controller
      */
     public function show()
     {
-      $contents= Content::all();
+      $contents= Content::all()->sortByDesc('created_at');
       return view('contentshow',compact('contents'));
     }
 
