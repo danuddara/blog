@@ -5,7 +5,13 @@
     <a href="{{ url('/content') }}">< Back to Content</a>
     <h2 style="text-align: center">Add New Content to Blog</h2><br/>
     <div class="container">
-    </div>
+        <br />
+        @if (\Session::has('failure'))
+            <div class="alert alert-warning">
+                <p>{{ \Session::get('failure') }}</p>
+            </div><br />
+        @endif
+
     <form method="post" action="{{url('add')}}">
         @csrf
         <div class="row">
@@ -36,5 +42,6 @@
             </div>
         </div>
     </form>
+</div>
 </div>
 @endsection

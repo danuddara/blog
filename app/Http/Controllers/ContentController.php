@@ -38,11 +38,15 @@ class ContentController extends Controller
     public function store(Request $request)
     {
       $content = new Content();
-      $content->title = $request->get('title');
-      $content->description = $request->get('description');
-      $content->tags = $request->get('tags');
-      $content->save();
-      return redirect('content')->with('success', "Content '{$content->title}' has been successfully added");
+      if($request->get('title') && $request->get('description')) {
+        $content->title = $request->get('title');
+        $content->description = $request->get('description');
+        $content->tags = $request->get('tags');
+        $content->save();
+        return redirect('content')->with('success', "Content '{$content->title}' has been successfully added");
+      } else {
+        return redirect('add')->with('failure', "Content cannot be empty");
+      }
     }
 
     /**
